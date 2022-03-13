@@ -1,4 +1,4 @@
-name: jaxcap
+name: bayesian_inference_tut
 channels:
   - conda-forge
   - defaults
@@ -141,4 +141,4 @@ dependencies:
     - jaxlib
     - graphviz
     - ipympl
-prefix: /opt/homebrew/Caskroom/miniforge/base/envs/jaxcap
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/bayesian_inference_tut

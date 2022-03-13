@@ -123,15 +123,15 @@ Books and courses:
 
 ### Deps
 
-    conda create --name jaxcap python=3.10
-    conda activate jaxcap 
+    conda create --name bayesian_inference_tut python=3.10
+    conda activate bayesian_inference_tut 
     conda install -y -c conda-forge numpyro matplotlib scipy pandas seaborn plotly arviz graphviz
     pip install jax jaxlib graphviz ipyimpl
 
 or:
 
     conda create -f environment.yml
-    conda activate jaxcap
+    conda activate bayesian_inference_tut
 
 ### Animation
 
