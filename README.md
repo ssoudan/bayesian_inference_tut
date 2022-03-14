@@ -4,8 +4,6 @@ Sebastien Soudan
 
 Quick tutorial on Bayesian inference. See the [notebook](bayesian_inference.ipynb) for the actual code.
 
-(If you know a way to have latex equations in GH markdown that can be read both in light and dark themes, let me know.)
-
 The notebook is [here](bayesian_inference.ipynb).
 
 ## Running the notebook
