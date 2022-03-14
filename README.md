@@ -29,7 +29,9 @@ This results in functions of the form:
 
 <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\displaystyle f(x)={\frac {L}{1 %2B e^{-k(x-x_{0})}}},}}#gh-dark-mode-only">
 
-where <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only">, <img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> and <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> are values to be determined:
+where <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only">, 
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> and 
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> are values to be determined:
 - <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only"> is the right asymptote and plays a role of capacity,
 - <img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> affects the steepness of the transition and 
 - <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> the point where this happens around.
@@ -41,12 +43,11 @@ Ok, great, now how do we estimate these parameters if we just have observations?
 
 ## Bayesian inference
 
-
-
 Sad news: actual data will be noisier than the idealistic model presented above. 
 
 We will take a Bayesian approach: the data are what they are, what carries uncertainty is our estimates of the 
-parameters. So our parameters <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\theta = (L, k, x0)}}#gh-dark-mode-only"> are modeled as distributions <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta)}}#gh-dark-mode-only">.
+parameters. So our parameters <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\theta = (L, k, x0)}}#gh-dark-mode-only"> 
+are modeled as distributions <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta)}}#gh-dark-mode-only">.
 
 We are looking for the parameters given the data we have observed:
 <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta | data)}}#gh-dark-mode-only">
@@ -56,22 +57,28 @@ Using Bayes formula, we have:
 
 <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta | data) = \frac{p(data | \theta)p(\theta)}{p(data)}}}#gh-dark-mode-only">
 
-We have a tool to draw samples from this distribution: MCMC samplers. 
-We will skip the details. The important point is that this method is made available
+We have a tool to draw samples from this distribution: MCMC samplers -- see the tutorial in the [References](#References) section for more about this and 
+alternative methods to compute this type of distributions. 
+We will skip the details here. The important point is that this method is made available
 relatively straightforwardly under the name of *probabilistic programming*.
 
-A probabilistic program essentially defines the prior <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta)}}#gh-dark-mode-only">, 
+A probabilistic program essentially defines the prior <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta)}}#gh-dark-mode-only"> 
+which defines our prior knowledge of where we expect to find the actual values of the parameters, 
 the process to generate data from <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\theta}}#gh-dark-mode-only">: 
-<img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\mathrm{data} | \theta)}}#gh-dark-mode-only"> and given the observation <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\mathrm{data}}}#gh-dark-mode-only"> can generate samples from  
-<img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta|\mathrm{data})}}#gh-dark-mode-only">. If generate enough samples we can get a pretty good idea of what the distribution looks like
-or we can use this to compute quantities under this distribution - say median or percentiles for examples to compare 
-alternatives, as in Bayesian AB testing.
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\mathrm{data} | \theta)}}#gh-dark-mode-only"> 
+and given the observation <img src="https://render.githubusercontent.com/render/math?math={\color{red}{\mathrm{data}}}#gh-dark-mode-only"> 
+can generate samples from <img src="https://render.githubusercontent.com/render/math?math={\color{red}{p(\theta|\mathrm{data})}}#gh-dark-mode-only">. 
+With enough samples we can get a pretty good idea of what the distribution looks like or we can use this to compute 
+quantities under this distribution - say median or percentiles for examples to compare alternatives, as in Bayesian AB testing.
 
 Back to our initial problem of estimating the logistic function that match our data.
-For our case, we want samples (jointly sampled) from <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only">, <img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> and <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> so we can compute our <img src="https://render.githubusercontent.com/render/math?math={\color{red}{f(x)}}#gh-dark-mode-only"> for a range of 
-values of <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only">, <img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> and <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> so we can compute our <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x}}#gh-dark-mode-only"> - possibly a little bit in the future. 
+For our case, we want samples (jointly sampled) from <img src="https://render.githubusercontent.com/render/math?math={\color{red}{L}}#gh-dark-mode-only">, 
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{k}}#gh-dark-mode-only"> and 
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{x0}}#gh-dark-mode-only"> so we can compute our 
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{f(x)}}#gh-dark-mode-only"> for a range of 
+values of <img src="https://render.githubusercontent.com/render/math?math={\color{red}{x}}#gh-dark-mode-only"> that extends beyond the last data point we have. 
 
-Using numpyro, this is what the 'model()' function does given some observations provided as two vectors of observations *x_obs* and *y_obs*:
+Using numpyro, this is what the `model()` function does given some observations provided as two vectors of observations `x_obs` and `y_obs`:
 
 ```python
 def model(x_obs, y_obs=None):        
@@ -96,7 +103,8 @@ the posterior.
 
 **The point to remember**: if you have data and a parameterized model that could 
 have generated them, using probabilistic programming you can recover the distribution of these parameters by 
-throwing CPU (or GPU) cycles at the problem. Very powerful. See https://arxiv.org/pdf/1405.4720.pdf.
+throwing CPU (or GPU) cycles at the problem. Very powerful. See https://arxiv.org/pdf/1405.4720.pdf or 
+https://num.pyro.ai/en/stable/tutorials/.
 
 The notebook is [here](bayesian_inference.ipynb).
 
@@ -105,9 +113,9 @@ Have fun!
 ## References
 
 Theory:
-- http://www.columbia.edu/~mh2078/MonteCarlo/MCMC_Bayes.pdf
-- https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3759243
+- (!!) [A Tutorial on Markov Chain Monte-Carlo and Bayesian Modeling, Haugh, Martin B.](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3759243)
 - https://en.wikipedia.org/wiki/Bayesian_inference
+- https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
 
 Examples of applications:
 - https://num.pyro.ai/en/stable/tutorials/
@@ -121,18 +129,26 @@ Books and courses:
 
 ## Running the notebook
 
+This is a Jupyter notebook.  
+
 ### Deps
 
     conda create --name bayesian_inference_tut python=3.10
     conda activate bayesian_inference_tut 
-    conda install -y -c conda-forge numpyro matplotlib scipy pandas seaborn plotly arviz graphviz
-    pip install jax jaxlib graphviz ipyimpl
+    conda install -y -c conda-forge numpyro matplotlib scipy pandas seaborn plotly arviz 
+    pip install jax jaxlib graphviz ipyimpl jupyter
 
-or:
+or on a M1 Mac:
 
     conda create -f environment.yml
     conda activate bayesian_inference_tut
+    pip install jupyter
+
+### Running 
+
+    conda activate bayesian_inference_tut
+    jupyter notebook bayesian_inference.ipynb
 
 ### Animation
 
-    convert -delay 100  -dispose Background -background White -alpha remove -alpha off *.png animated.gif
+To create the animation with ImageMagick, see [img/ANIMATE.sh](img/ANIMATE.sh).
