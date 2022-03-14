@@ -11,7 +11,7 @@ Quick tutorial on Bayesian inference. See the [notebook](bayesian_inference.ipyn
 Logistic functions are S-shaped functions that represent phenomena with an exponential growth under a finite capacity.
 Stated differently they are solutions to the following differential equation:
 
-<img src="https://render.githubusercontent.com/render/math?math={\color{red}{\displaystyle {\frac {d}{dx}}f(x)=\frac{k}{L}f(x){\big (}L-f(x){\big )}}}#gh-dark-mode-only">
+<img src="https://render.githubusercontent.com/render/math?math={\color{red}{\displaystyle {\frac {d}{dx}}f(x) = \frac{k}{L}f(x){\big (}L-f(x){\big )}}#gh-dark-mode-only">
 
 which states that the growth rate: 
 
