@@ -41,8 +41,6 @@ Ok, great, now how do we estimate these parameters if we just have observations?
 
 ## Bayesian inference
 
-
-
 Sad news: actual data will be noisier than the idealistic model presented above. 
 
 We will take a Bayesian approach: the data are what they are, what carries uncertainty is our estimates of the 
@@ -130,7 +128,7 @@ Books and courses:
 
 or:
 
-    conda create -f environment.yml
+    conda env create -f environment.yml
     conda activate bayesian_inference_tut
 
 ### Animation
